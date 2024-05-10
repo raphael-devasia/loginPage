@@ -1,0 +1,32 @@
+const express = require("express")
+// const collection = require("../controller/adminSchema")
+// const userCollection = require("../../controller/schema")
+const router = express.Router()
+const authentication = require('../../controller/authentication')
+const {
+    getLogin,
+    getRegister,
+    getHome,
+    getLogout,
+    createLogin,
+    createRegister,
+    newUserRegister,
+    deleteUser,
+    updateUser,
+    searchData
+} = require("../../controller/admin")
+
+
+router.get("/login", getLogin)
+router.post("/login", createLogin)
+router.get("/register", getRegister)
+router.post("/register", createRegister)
+router.post("/newuser",newUserRegister)
+router.get("/home", getHome)
+router.get("/logout", getLogout)
+router.post("/delete/:id", deleteUser)
+router.post("/update/:id",authentication,updateUser)
+router.post("/search",searchData)
+
+
+module.exports = router
